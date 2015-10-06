@@ -1,1 +1,7 @@
 %div{id: "app-container"}
+%table
+  - @tweets.each do |tweet|
+    %tr
+      %td= tweet[:tweet][:user_name]
+      %td= tweet[:tweet][:text]
+      %td= tweet[:sentiment][:polarity] if tweet[:sentiment]

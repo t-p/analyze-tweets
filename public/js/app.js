@@ -16,7 +16,6 @@ var Tweet = React.createClass({
 var TweetList = React.createClass({
   render: function() {
     //no "ng-repeat" or "foreach"
-    debugger
     var tweetNodes = this.props.data.map(function(tweet) {
       return (
         <Tweet tweet={tweet} key={tweet.user_name} />

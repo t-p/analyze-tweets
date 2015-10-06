@@ -29,19 +29,15 @@ class AnalyzeTweets < Sinatra::Base
   end
 
   post "/search" do
-    @@tweets = []
+    @tweets = []
     @twitter.search("to:#{params[:search]}", result_type: "recent").take(params[:count].to_i).collect do |tweet|
       sentiment = @alyien.sentiment text: tweet.text, mode: "tweet"
       concepts = @alyien.concepts text: tweet.text, language: "en"
-      @@tweets << { tweet: { user_name: tweet.user.screen_name, text: tweet.text },
-                    sentiment: sentiment,
-                    concepts: concepts }
+      @tweets << { tweet: { user_name: tweet.user.screen_name, text: tweet.text },
+                   sentiment: sentiment,
+                   concepts: concepts }
     end
 
     haml :search
-  end
-
-  get "/search" do
-    json @@tweets.to_json
   end
 end
