@@ -1,0 +1,11 @@
+%div{id: "reactjs"}
+%form{ action: "search", method: "post", id: "search-form" }
+  %fieldset
+    %ol
+      %li
+        %label{for: "name"} Name:
+        %input{type: "text", name: "search", class: "text"}
+        %select{name: "count", form: "search-form"}
+          - ["10", "100", "500", "1000"].each do |i|
+            %option{value: i}= i
+    %input{type: "submit", value: "Send", class: "button"}
