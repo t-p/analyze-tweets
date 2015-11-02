@@ -39,5 +39,7 @@ class AnalyzeTweets < Sinatra::Base
     end
 
     haml :search
+    #content_type :json
+    #@tweets.to_json
   end
 end
